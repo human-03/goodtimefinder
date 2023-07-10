@@ -1,0 +1,91 @@
+package com.jyothiyshya.nakshitra;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
+public class Nakshitra {
+public static void main(String []args) throws JSONException {
+	JSONObject dinadipathulu = new JSONObject();
+	
+	List<JSONArray> nakshathragroups = new ArrayList<JSONArray>();
+		nakshathragroups.add(new JSONArray().put("Sunday"));
+	nakshathragroups.add(new JSONArray().put("Monday"));
+	nakshathragroups.add(new JSONArray().put("Tuesday"));
+	nakshathragroups.add(new JSONArray().put("Wednesday"));
+	nakshathragroups.add(new JSONArray().put("Thursday"));
+	nakshathragroups.add(new JSONArray().put("Friday"));
+	nakshathragroups.add(new JSONArray().put("Saturday"));
+	nakshathragroups.add(new JSONArray().put("pushyami").put("anuradha").put("uttarabadra"));
+	nakshathragroups.add(new JSONArray().put("asresha").put("jyeshta").put("revathi"));
+	
+	List<JSONObject> grahas = new ArrayList<JSONObject>();
+	grahas.add(new JSONObject().put("6:00 to 7:30", "Udyogam"));
+	grahas.add(new JSONObject().put("7:30 to 9:00", "Labham"));
+	grahas.add(new JSONObject().put("9:00 to 10:30", "Visham"));
+	grahas.add(new JSONObject().put("10:30 to 12:00", "Amra"));
+	grahas.add(new JSONObject().put("12:00 to 1:30", "Sukham"));
+	grahas.add(new JSONObject().put("1:30 to 3:00", "Dhanam"));
+	grahas.add(new JSONObject().put("3:00 to 4:30", "Amra"));
+	grahas.add(new JSONObject().put("4:30 to 6:00", "Visham"));
+	grahas.add(new JSONObject().put("graha", "kuja").put("value", 9));
+	
+	
+	for (JSONArray nakshathragroup : nakshathragroups) {
+		for ( int j = 0; j <nakshathragroup.length(); j++) {
+			String nakshatra = nakshathragroup.getString(j);
+			JSONObject nakshatraRow = createNakshatraRow(grahas, nakshathragroups);
+			dinadipathulu.put(nakshatra, nakshatraRow);	
+		}
+		JSONObject lastGraha = grahas.remove(8);
+		grahas.add(0, lastGraha);
+	}
+	
+	
+	System.out.println(dinadipathulu.toString(2));
+	
+	
+	System.out.println("Enter Nakshatra for a date: \n");
+	Scanner scanner = new Scanner(System.in);
+	String dayNakshatra = scanner.nextLine();
+	
+	System.out.println("Enter Nakshatra for a person: \n");
+	String personNakshatra = scanner.nextLine();
+	JSONObject personNakshatraDinadipatulu = dinadipathulu.getJSONObject(personNakshatra);
+	if(personNakshatraDinadipatulu == null ) {
+		throw new RuntimeException("No dinadipathulu found for given person nakshatra");
+	}
+	JSONObject dayNakshatraDinadipatulu = personNakshatraDinadipatulu.getJSONObject(dayNakshatra);
+	if(dayNakshatraDinadipatulu == null ) {
+		throw new RuntimeException("No dinadipathulu found for given day nakshatra");
+	}
+	
+	int dayValue = dayNakshatraDinadipatulu.getInt("value");
+	
+	if( dayValue % 2 == 0 || dayValue == 9 ) {
+		System.out.println(" The day for the given person is auspecious " + dayNakshatraDinadipatulu.toString(2));
+	}else {
+		System.out.println(" The day for the given person is not  auspecious " + dayNakshatraDinadipatulu.toString(2));
+	}
+	
+}
+
+private static JSONObject createNakshatraRow(List<JSONObject> grahas, List<JSONArray> nakshathragroups) throws JSONException {
+	JSONObject nakshatraRow =  new JSONObject();
+	
+	for ( int i=0; i<grahas.size(); i++) {
+		JSONObject graha = grahas.get(i);
+		JSONArray nakshathragroup = nakshathragroups.get(i);
+		for ( int j = 0; j <nakshathragroup.length(); j++) {
+			String nakshatra = nakshathragroup.getString(j);
+			nakshatraRow.put(nakshatra, graha);
+		}
+	}
+	return nakshatraRow;
+}
+}
+// 94

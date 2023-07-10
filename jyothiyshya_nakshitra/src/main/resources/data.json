@@ -1,0 +1,70 @@
+{
+"Ashwini" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+"Makha" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+"Muula" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+"Bharani" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+
+"Pubba" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+"Purvashada" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+
+"Muula" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+
+"Muula" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+
+"Muula" : {
+"Ashwini":{"graha":"ravi","value":1},
+"Makha":{"graha":"ravi","value":1},
+ "Muula":{"graha":"ravi","value":1}
+},
+
+
+
+
+"Bharani": {
+"Bharani":{"graha":"Budha","value":2},
+"Pubba":{"graha":"Budha","value":2},
+"Purvashada":{"graha":"Budha","value":2}
+},
+"Pubba": {
+"Bharani":{"graha":"Budha","value":2},
+"Pubba":{"graha":"Budha","value":2},
+"Purvashada":{"graha":"Budha","value":2}
+},
+"Purvashada": {
+"Bharani":{"graha":"Budha","value":2},
+"Pubba":{"graha":"Budha","value":2},
+"Purvashada":{"graha":"Budha","value":2}
+}
+}
